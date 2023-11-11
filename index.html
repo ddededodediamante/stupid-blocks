@@ -3,24 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blockly Example</title>
+  <title>Stupid Blocks</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #blocklyContainer {
+      display: flex;
+      height: 100vh;
+    }
+
+    #blocklyDiv {
+      flex: 1;
+      height: 100%;
+    }
+
+    #generatedCodeContainer {
+      flex: 1;
+      height: 100%;
+      overflow: auto;
+      font-family: Arial, sans-serif;
+      padding: 10px;
+    }
+  </style>
 
   <!-- Include Blockly library -->
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
 
+  <!-- Include Blockly default blocks -->
   <script src="https://unpkg.com/blockly/blocks.min.js"></script>
 </head>
 <body>
 
-  <!-- Blockly container -->
-  <div id="blocklyDiv" style="height: 480px; width: 600px; display: inline-block;"></div>
+  <div id="blocklyContainer">
+    <div id="blocklyDiv"></div>
 
-  <div>
-    <p>Generated code:</p>
-    <pre id="generatedCode"></pre>
+    <div id="generatedCodeContainer">
+      <p>Generated code:</p>
+      <pre id="generatedCode"></pre>
+    </div>
   </div>
 
-  <!-- Blockly toolbox definition -->
   <xml id="toolbox" style="display: none">
     <category name="Logic" colour="#5C81A6">
       <block type="controls_if"></block>
@@ -87,6 +113,11 @@
       <block type="colour_blend"></block>
     </category>
 
+    <category name="Variables" colour="#FFA500">
+      <block type="variables_get"></block>
+      <block type="variables_set"></block>
+    </category>
+
     <category name="Custom Blocks" colour="#FF6680">
       <block type="custom_addition"></block>
     </category>
@@ -112,7 +143,6 @@
     }
 
     workspace.addChangeListener(updateCode);
-
     updateCode();
   </script>
 
