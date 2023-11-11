@@ -1,7 +1,7 @@
 Blockly.Blocks['custom_variablechange'] = {
   json: {
     "type": "custom_variablechange",
-    "message0": "change %1 %2 by %3",
+    "message0": "change %1 by %2",
     "args0": [
       {
         "type": "field_input",
