@@ -139,6 +139,7 @@
 
     function updateCode() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
+      Blockly.JavaScript.addReservedWords('code');
       document.getElementById('generatedCode').textContent = code;
     }
 
