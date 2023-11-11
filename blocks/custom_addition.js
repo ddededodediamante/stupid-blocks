@@ -25,7 +25,7 @@ Blockly.Blocks['custom_addition'] = {
   }
 };
 
-Blockly.JavaScript['custom_addition'] = function(block) {
+javascript.javascriptGenerator.forBlock['custom_addition'] = function(block) {
   var value_num1 = generator.valueToCode(block, 'NUM1', javascript.Order.ATOMIC);
   var value_num2 = generator.valueToCode(block, 'NUM2', javascript.Order.ATOMIC);
   var code = `${value_num1} + ${value_num2}`;
