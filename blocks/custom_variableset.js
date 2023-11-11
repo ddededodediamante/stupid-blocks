@@ -1,4 +1,4 @@
-javascript.javascriptGenerator.forBlock['custom_variablechange'] = function(block, generator) {
+Blockly.Blocks['custom_variableset'] = {
   json: {
     "type": "custom_variableset",
     "message0": "%1 %2 set to %3",
