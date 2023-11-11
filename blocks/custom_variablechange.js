@@ -17,7 +17,7 @@ Blockly.Blocks['custom_variablechange'] = {
     "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 230,
+    "colour": 330,
     "tooltip": "",
     "helpUrl": ""
   },
