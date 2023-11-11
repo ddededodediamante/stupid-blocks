@@ -47,6 +47,6 @@ javascript.javascriptGenerator.forBlock['custom_variableset'] = function(block, 
   var dropdown_type = block.getFieldValue('TYPE');
   var text_var = block.getFieldValue('VAR');
   var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
-  var code = `dropdown_type text_var = value_value`;
+  var code = `${dropdown_type} ${text_var} = ${value_value}`;
   return code;
 };
