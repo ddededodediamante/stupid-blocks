@@ -1,4 +1,4 @@
-Blockly.Blocks['custom_variablechange'] = {
+Blockly.Blocks['custom_variableget'] = {
   json: {
     "type": "custom_variableget",
     "message0": "get %1",
