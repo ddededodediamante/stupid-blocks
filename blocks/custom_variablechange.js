@@ -28,7 +28,7 @@ Blockly.Blocks['custom_variablechange'] = {
 
 javascript.javascriptGenerator.forBlock['custom_variablechange'] = function(block, generator) {
   var text_var = block.getFieldValue('VAR');
-  var value_name = generator.valueToCode(block, 'NUMBER', javascript.Order.ATOMIC);
-  var code = `${text_var} += ${value_number}`;
+  var input_value = generator.valueToCode(block, 'NUMBER', javascript.Order.ATOMIC);
+  var code = `${text_var} += ${input_value}`;
   return code;
 };
