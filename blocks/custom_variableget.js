@@ -23,5 +23,5 @@ Blockly.Blocks['custom_variableget'] = {
 javascript.javascriptGenerator.forBlock['custom_variableget'] = function(block, generator) {
   var text_var = block.getFieldValue('VAR');
   var code = `${text_var}`;
-  return [code, Blockly.javascript.ORDER_NONE];
+  return code;
 };
