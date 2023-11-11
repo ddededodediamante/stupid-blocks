@@ -29,14 +29,11 @@
       padding: 10px;
       white-space: pre; /* Preserve whitespace in the code */
       overflow-x: auto; /* Enable horizontal scrolling */
+      background-color: #f0f0f0; /* Adjust background color if needed */
+      border-radius: 5px; /* Add border radius if needed */
+      margin: 0; /* Remove margin if needed */
     }
 
-    #codeBlock {
-      background-color: #f0f0f0;
-      padding: 10px;
-      border-radius: 5px;
-      margin: 0;
-    }
   </style>
 
   <!-- Include Blockly library -->
@@ -52,7 +49,6 @@
 
     <div id="generatedCodeContainer">
       <p>Generated code:</p>
-      <pre id="codeBlock"></pre>
     </div>
   </div>
 
@@ -158,7 +154,7 @@
     function updateCode() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       Blockly.JavaScript.addReservedWords('code');
-      document.getElementById('codeBlock').textContent = code;
+      document.getElementById('generatedCodeContainer').textContent = code;
     }
 
     workspace.addChangeListener(updateCode);
