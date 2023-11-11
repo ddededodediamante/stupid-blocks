@@ -34,7 +34,7 @@ javascript.javascriptGenerator.forBlock['custom_variablechange'] = function(bloc
     "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 230,
+    "colour": 330,
     "tooltip": "",
     "helpUrl": ""
   },
