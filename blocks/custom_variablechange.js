@@ -1,12 +1,12 @@
 Blockly.Blocks['custom_variablechange'] = {
   json: {
-    "type": "custom_variablechange",
+    "type": "block_type",
     "message0": "change %1 by %2",
     "args0": [
       {
-        "type": "field_variable",
+        "type": "input_value",
         "name": "VARIABLE",
-        "variable": "item"
+        "check": "String"
       },
       {
         "type": "input_value",
@@ -27,8 +27,8 @@ Blockly.Blocks['custom_variablechange'] = {
 };
 
 javascript.javascriptGenerator.forBlock['custom_variablechange'] = function(block, generator) {
-  var variable_variable = generator.nameDB_.getName(block.getFieldValue('VARIABLE'), Blockly.Variables.NAME_TYPE);
+  var value_variable = generator.valueToCode(block, 'VARIABLE', javascript.Order.ATOMIC);
   var value_number = generator.valueToCode(block, 'NUMBER', javascript.Order.ATOMIC);
-  var code = `${variable_variable} += ${value_number}`;
+  var code = `${value_variable} += ${value_number}`;
   return code;
 };
