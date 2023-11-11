@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stupid Blocks</title>
+
+  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+
+  <script src="https://unpkg.com/blockly/blocks.min.js"></script>
+</head>
+<body>
+
+  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Custom Blocks" colour="#FF6680">
+      <block type="block1"></block>
+      <block type="block2"></block>
+    </category>
+  </xml>
+
+  <script src="blocks/block1.js"></script>
+  <script src="blocks/block2.js"></script>
+  
+  <script>
+    var workspace = Blockly.inject('blocklyDiv', {
+      toolbox: document.getElementById('toolbox'),
+      grid: {
+        spacing: 20,
+        length: 3,
+        colour: '#ccc',
+        snap: true,
+      },
+      trashcan: true,
+    });
+  </script>
+
+</body>
+</html>
