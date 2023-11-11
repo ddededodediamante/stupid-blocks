@@ -15,8 +15,8 @@ Blockly.Blocks['custom_addition'] = {
       }
     ],
     "inputsInline": true,
-    "output": null,
-    "colour": 230,
+    "output": "Number",
+    "colour": 235.2,
     "tooltip": "",
     "helpUrl": ""
   },
