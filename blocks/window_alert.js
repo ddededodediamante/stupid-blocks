@@ -16,7 +16,7 @@ Blockly.Blocks['window_alert'] = {
   ],
   "previousStatement": null,
   "nextStatement": null,
-  "colour": 45,
+  "colour": "#69717d",
   "tooltip": "",
   "helpUrl": ""
 },
