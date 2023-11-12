@@ -39,9 +39,8 @@
 
   <!-- Include Blockly library -->
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-
-  <!-- Include Blockly default blocks (all blocks for JavaScript) -->
   <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+  <script src="https://unpkg.com/@blockly/continuous-toolbox/dist/index.js"></script>
 </head>
 <body>
 
@@ -118,17 +117,22 @@
     </category>
 
     <category name="Variables" colour="#a55b80">
-      <block type="custom_variableget"></block>
-      <block type="custom_variableset"></block>
-      <block type="custom_variablechange"></block>
+      <block type="variabless_get"></block>
+        <value name="NAME">
+          <shadow type="text">
+            <field name="TEXT">variable</field>
+          </shadow>
+        </value>
+      <block type="variabless_set"></block>
+      <block type="variabless_change"></block>
     </category>
 
   </xml>
 
   <script src="blocks/custom_addone.js"></script>
-  <script src="blocks/custom_variableget.js"></script>
-  <script src="blocks/custom_variableset.js"></script>
-  <script src="blocks/custom_variablechange.js"></script>
+  <script src="blocks/variabless_get.js"></script>
+  <script src="blocks/variabless_set.js"></script>
+  <script src="blocks/variabless_change.js"></script>
 
   <script>
     var workspace = Blockly.inject('blocklyDiv', {
