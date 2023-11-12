@@ -124,6 +124,7 @@
 
     <category name="Window" colour="#69717d">
       <block type="window_alert"></block>
+      <block type="window_confirm"></block>
     </category>
 
   </xml>
@@ -133,6 +134,7 @@
   <script src="blocks/custom_variableset.js"></script>
   <script src="blocks/custom_variablechange.js"></script>
   <script src="blocks/window_alert.js"></script>
+  <script src="blocks/window_confirm.js"></script>
 
   <script>
     var workspace = Blockly.inject('blocklyDiv', {
@@ -151,7 +153,7 @@
         wheel: true,
         startScale: 1.0,
         maxScale: 3,
-        minScale: 0.3,
+        minScale: 0.2,
         scaleSpeed: 1.2,
         pinch: true
       },
