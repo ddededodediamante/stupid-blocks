@@ -1,17 +1,17 @@
-Blockly.Blocks['custom_variableget'] = {
+Blockly.Blocks['variabless_get'] = {
   json: {
-    "type": "custom_variableget",
+    "type": "variabless_get",
     "message0": "get %1",
     "args0": [
       {
-        "type": "field_input",
-        "name": "VAR",
-        "text": "variable"
+        "type": "input_value",
+        "name": "NAME",
+        "check": "String"
       }
     ],
     "inputsInline": true,
     "output": null,
-    "colour": 330,
+    "colour": 230,
     "tooltip": "",
     "helpUrl": ""
   },
@@ -20,7 +20,7 @@ Blockly.Blocks['custom_variableget'] = {
   }
 };
 
-javascript.javascriptGenerator.forBlock['custom_variableget'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['variabless_get'] = function(block, generator) {
   var text_var = block.getFieldValue('VAR');
   var code = `${text_var}`;
   return [code, javascript.Order.NONE];
