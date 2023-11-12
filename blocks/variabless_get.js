@@ -21,7 +21,7 @@ Blockly.Blocks['variabless_get'] = {
 };
 
 javascript.javascriptGenerator.forBlock['variabless_get'] = function(block, generator) {
-  var value_name = block.getFieldValue('NAME');
+  var value_name = generator.valueToCode(block, 'NAME', javascript.Order.ATOMIC);
   var code = `${value_name}`;
   return [code, javascript.Order.NONE];
 };
