@@ -34,11 +34,6 @@
       border: 1px solid #ccc;
     }
 
-    #runCodeButton {
-      margin-top: 10px;
-      align-self: flex-start;
-    }
-
   </style>
 
   <!-- Include Blockly library -->
@@ -169,7 +164,8 @@
     function updateCode() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       Blockly.JavaScript.addReservedWords('code');
-      document.getElementById('generatedCodeContainer').textContent = code;
+      var code2 = '<button id="runCodeButton" onclick="runCode()">Run Generated Code</button>\n' + code;
+      document.getElementById('generatedCodeContainer').textContent = code2
     }
 
     function runCode() {
