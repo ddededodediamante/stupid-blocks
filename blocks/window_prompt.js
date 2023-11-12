@@ -27,5 +27,5 @@ Blockly.Blocks['window_prompt'] = {
 javascript.javascriptGenerator.forBlock['window_prompt'] = function(block, generator) {
   var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
   var code = `window.prompt(${value_value})`;
-  return [code, javascript.order.NONE];
+  return [code, javascript.Order.NONE];
 };
