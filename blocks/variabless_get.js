@@ -5,7 +5,7 @@ Blockly.Blocks['variabless_get'] = {
     "args0": [
       {
         "type": "input_value",
-        "name": "NAME",
+        "name": "VAR",
         "check": "String"
       }
     ],
@@ -21,7 +21,7 @@ Blockly.Blocks['variabless_get'] = {
 };
 
 javascript.javascriptGenerator.forBlock['variabless_get'] = function(block, generator) {
-  var text_var = block.getFieldValue('VAR');
-  var code = `${text_var}`;
+  var input_value = block.getFieldValue('VAR');
+  var code = `${input_value}`;
   return [code, javascript.Order.NONE];
 };
