@@ -44,10 +44,11 @@
   <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
 </head>
 <body>
-  <button onclick="runCode()">Run Generated Code</button>
   <div id="blocklyContainer">
     <div id="blocklyDiv"></div>
-    <div id="generatedCodeContainer"></div>
+    <div id="generatedCodeContainer">
+      <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
+    </div>
   </div>
 
   <xml id="toolbox" style="display: none">
