@@ -47,6 +47,7 @@
     <div id="blocklyDiv"></div>
     <div id="generatedCodeContainer">
       <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
+      <p id="generatedCodeBlockly">...</p>
     </div>
   </div>
 
@@ -164,8 +165,7 @@
     function updateCode() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       Blockly.JavaScript.addReservedWords('code');
-      var code2 = '<button id="runCodeButton" onclick="runCode()">Run Generated Code</button>\n' + code;
-      document.getElementById('generatedCodeContainer').textContent = code2
+      document.getElementById('generatedCodeBlockly').textContent = code
     }
 
     function runCode() {
