@@ -27,6 +27,6 @@ Blockly.Blocks['window_alert'] = {
 
 javascript.javascriptGenerator.forBlock['window_alert'] = function(block, generator) {
   var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
-  var code = `window.alert(${value_value});`;
+  var code = `window.alert(${value_value});\n`;
   return code;
 };
