@@ -1,7 +1,7 @@
 Blockly.Blocks['custom_variableset'] = {
   json: {
-    "type": "custom_variableset",
-    "message0": "%1 %2 set to %3",
+    "type": "variabless_set",
+    "message0": "%1 %2 = %3",
     "args0": [
       {
         "type": "field_dropdown",
@@ -22,9 +22,9 @@ Blockly.Blocks['custom_variableset'] = {
         ]
       },
       {
-        "type": "field_input",
-        "name": "VAR",
-        "text": "variable"
+        "type": "input_value",
+        "name": "NAME",
+        "check": "String"
       },
       {
         "type": "input_value",
@@ -34,7 +34,7 @@ Blockly.Blocks['custom_variableset'] = {
     "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 330,
+    "colour": 230,
     "tooltip": "",
     "helpUrl": ""
   },
@@ -45,8 +45,8 @@ Blockly.Blocks['custom_variableset'] = {
 
 javascript.javascriptGenerator.forBlock['custom_variableset'] = function(block, generator) {
   var dropdown_type = block.getFieldValue('TYPE');
-  var text_var = block.getFieldValue('VAR');
+  var value_name = generator.valueToCode(block, 'NAME', javascript.Order.ATOMIC);
   var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
-  var code = `${dropdown_type} ${text_var} = ${value_value};\n`;
+  var code = `${dropdown_type} ${value_name} = ${value_value};\n`;
   return code;
 };
