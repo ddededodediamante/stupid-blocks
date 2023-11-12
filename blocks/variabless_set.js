@@ -1,4 +1,4 @@
-Blockly.Blocks['custom_variableset'] = {
+Blockly.Blocks['variabless_set'] = {
   json: {
     "type": "variabless_set",
     "message0": "%1 %2 = %3",
@@ -43,7 +43,7 @@ Blockly.Blocks['custom_variableset'] = {
   }
 };
 
-javascript.javascriptGenerator.forBlock['custom_variableset'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['variabless_set'] = function(block, generator) {
   var dropdown_type = block.getFieldValue('TYPE');
   var value_name = generator.valueToCode(block, 'NAME', javascript.Order.ATOMIC);
   var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
