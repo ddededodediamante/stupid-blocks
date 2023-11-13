@@ -22,6 +22,6 @@ Blockly.Blocks['custom_addone'] = {
 
 javascript.javascriptGenerator.forBlock['custom_addone'] = function(block, generator) {
   var value_num1 = generator.valueToCode(block, 'NUM1', javascript.Order.ATOMIC);
-  var code = `++${value_num1}`;
+  var code = `${value_num1}+1`;
   return [code, javascript.Order.NONE];
 };
