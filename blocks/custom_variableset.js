@@ -46,7 +46,7 @@ Blockly.Blocks['custom_variableset'] = {
 javascript.javascriptGenerator.forBlock['custom_variableset'] = function(block, generator) {
   var dropdown_type = block.getFieldValue('TYPE');
   var text_var = block.getFieldValue('VAR');
-  var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
+  var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC) || "''";
   var code = `${dropdown_type} ${text_var} = ${value_value};\n`;
   return code;
 };
