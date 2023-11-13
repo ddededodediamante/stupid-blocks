@@ -27,6 +27,6 @@ Blockly.Blocks['values_asnumber'] = {
 
 javascript.javascriptGenerator.forBlock['values_asnumber'] = function(block, generator) {
   var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
-  var code = `Number(value_value)`;
+  var code = `Number(${value_value})`;
   return [code, javascript.Order.NONE];
 };
