@@ -25,7 +25,7 @@ Blockly.Blocks['window_confirm'] = {
 };
 
 javascript.javascriptGenerator.forBlock['window_confirm'] = function(block, generator) {
-  var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC);
+  var value_value = generator.valueToCode(block, 'VALUE', javascript.Order.ATOMIC) || "''";
   var code = `window.confirm(${value_value})`;
   return [code, javascript.Order.NONE];
 };
