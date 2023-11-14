@@ -64,6 +64,10 @@
         <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
         <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
         <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
+        <select id="fontMenuSelect">
+            <option value="arial">Arial</option>
+            <option value="comicsans">Comic Sans MS</option>
+        </select>
       </div>
       <p id="generatedCodeBlockly">...</p>
     </div>
@@ -167,7 +171,22 @@
   <script src="blockly/core/dynamic_text_join.js"></script>
 
   <script>
+    const fontMenuSelect = document.getElementById("font-select");
     var fontSize = 16;
+    fontMenuSelect.addEventListener("change", function () {
+      const choice = fontSelect.value;
+      switch (choice) {
+        case "arial":
+          textElement.style.fontFamily = "Arial, sans-serif";
+          break;
+        case "comicsans":
+          textElement.style.fontFamily = "Comic Sans MS, cursive";
+          break;
+        default:
+          textElement.style.fontFamily = "Arial, sans-serif";
+      }
+    });
+    
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
       grid: {
