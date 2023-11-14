@@ -66,7 +66,7 @@
         <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
         <select id="fontMenuSelect">
             <option value="arial">Arial</option>
-            <option value="comicsans">Comic Sans MS</option>
+            <option value="brushscriptmt">Brush Script MT</option>
         </select>
       </div>
       <p id="generatedCodeBlockly">...</p>
@@ -171,15 +171,15 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const fontMenuSelect = document.getElementById('fontMenuSelect');
+      const fontMenuSelect = document.getElementById("fontMenuSelect");
       fontMenuSelect.addEventListener("change", function () {
         const choice = fontMenuSelect.value;
         switch (choice) {
           case "arial":
             document.body.style.fontFamily = "Arial, sans-serif";
             break;
-          case "comicsans":
-            document.body.style.fontFamily = "Comic Sans MS, cursive";
+          case "brushscriptmt":
+            document.body.style.fontFamily = "Brush Script MT", "cursive";
             break;
           default:
             document.body.style.fontFamily = "Arial, sans-serif";
