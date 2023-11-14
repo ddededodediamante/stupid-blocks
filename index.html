@@ -31,17 +31,12 @@
       background-color: #f0f0f0;
       margin: 0;
       position: relative;
+      top: 0;
+      margin: 10px;
     }
 
     #buttonContainer {
       display: flex;
-    }
-
-    #buttonContainer button {
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: 10px;
     }
 
     #generatedCodeBlockly {
@@ -61,11 +56,9 @@
   <div id="blocklyContainer">
     <div id="blocklyDiv"></div>
     <div id="generatedCodeContainer">
-      <div id="buttonContainer">
-        <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
-        <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
-        <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
-      </div>
+      <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
+      <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
+      <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
       <p id="generatedCodeBlockly">...</p>
     </div>
   </div>
