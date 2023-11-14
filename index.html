@@ -176,13 +176,13 @@
         const choice = fontMenuSelect.value;
         switch (choice) {
           case "arial":
-            textElement.style.fontFamily = "Arial, sans-serif";
+            document.body.style.fontFamily = "Arial, sans-serif";
             break;
           case "comicsans":
-            textElement.style.fontFamily = "Comic Sans MS, cursive";
+            document.body.style.fontFamily = "Comic Sans MS, cursive";
             break;
           default:
-            textElement.style.fontFamily = "Arial, sans-serif";
+            document.body.style.fontFamily = "Arial, sans-serif";
         }
       });
     });
