@@ -16,7 +16,7 @@ Blockly.Blocks['values_asstring'] = {
   ],
   "inputsInline": true,
   "output": "String",
-  "colour": "#5CA65C",
+  "colour": 135,
   "tooltip": "",
   "helpUrl": ""
 },
