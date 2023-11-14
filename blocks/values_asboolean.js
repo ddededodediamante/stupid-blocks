@@ -15,7 +15,7 @@ Blockly.Blocks['values_asboolean'] = {
  }
   ],
   "inputsInline": true,
-  "output": null,
+  "output": "Boolean",
   "colour": 135,
   "tooltip": "",
   "helpUrl": ""
