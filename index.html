@@ -163,6 +163,7 @@
   <script src="blocks/values_asstring.js"></script>
 
   <script>
+    var fontSize = 16;
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
       grid: {
@@ -201,7 +202,8 @@
     }
 
     function fontSizeAdd(num) {
-      document.getElementById('generatedCodeBlockly').style.fontSize += fontSizeAdd
+      fontSize += Number(num)
+      document.getElementById('generatedCodeBlockly').style.fontSize = fontSize + 'px'
     }
 
     workspace.addChangeListener(updateCode);
