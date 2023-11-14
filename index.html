@@ -42,6 +42,7 @@
 
     #generatedCodeBlockly {
       margin-top: -25px;
+      font-size: 16px;
     }
 
   </style>
@@ -57,6 +58,8 @@
     <div id="blocklyDiv"></div>
     <div id="generatedCodeContainer">
       <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
+      <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
+      <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
       <p id="generatedCodeBlockly">...</p>
     </div>
   </div>
@@ -195,6 +198,10 @@
       } catch(err) {
         window.alert(err)
       }
+    }
+
+    function fontSizeAdd(num) {
+      document.getElementById('generatedCodeBlockly').style.fontSize += fontSizeAdd
     }
 
     workspace.addChangeListener(updateCode);
