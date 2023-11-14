@@ -64,10 +64,6 @@
         <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
         <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
         <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
-        <select id="fontMenuSelect">
-            <option value="arial">Arial</option>
-            <option value="brushscriptmt">Brush Script MT</option>
-        </select>
       </div>
       <p id="generatedCodeBlockly">...</p>
     </div>
@@ -170,22 +166,6 @@
   <script src="blocks/values_asstring.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const fontMenuSelect = document.getElementById("fontMenuSelect");
-      fontMenuSelect.addEventListener("change", function () {
-        const choice = fontMenuSelect.value;
-        switch (choice) {
-          case "arial":
-            document.body.style.fontFamily = "Arial, sans-serif";
-            break;
-          case "brushscriptmt":
-            document.body.style.fontFamily = "Brush Script MT", "cursive";
-            break;
-          default:
-            document.body.style.fontFamily = "Arial, sans-serif";
-        }
-      });
-    });
     var fontSize = 16;
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
