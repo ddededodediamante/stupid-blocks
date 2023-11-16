@@ -93,7 +93,7 @@ Blockly.Blocks['window_console'] = {
 
 javascript.javascriptGenerator.forBlock['window_console'] = function(block, generator) {
   var dropdown_console = block.getFieldValue('CONSOLE');
-  var value_text = generator.valueToCode(block, 'TEXT', javascript.Order.ATOMIC) || '';
+  var value_text = generator.valueToCode(block, 'TEXT', javascript.Order.ATOMIC) || "''";
   if (dropdown_console == 'log') {
     var code = `console.log(${value_text});\n`;
   } else if (dropdown_console == 'warn') {
