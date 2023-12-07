@@ -19,7 +19,6 @@
     #blocklyDiv {
       flex: 1;
       height: 100%;
-      background-color: #f0f0f0;
     }
 
     #generatedCodeContainer {
@@ -65,7 +64,6 @@
         <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
         <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
         <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
-        <button id="switchMode" onclick="switchMode()">- Dark/Light Mode</button>
       </div>
       <p id="generatedCodeBlockly">...</p>
     </div>
@@ -173,7 +171,6 @@
 
   <script>
     var fontSize = 16;
-    var mode = 'light';
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
       grid: {
@@ -214,14 +211,6 @@
     function fontSizeAdd(num) {
       fontSize += Number(num)
       document.getElementById('generatedCodeBlockly').style.fontSize = fontSize + 'px'
-    }
-
-    function switchMode() {
-      if (mode == 'light') {
-        mode = 'dark';
-      } else {
-        mode = 'light';
-      }
     }
 
     workspace.addChangeListener(updateCode);
