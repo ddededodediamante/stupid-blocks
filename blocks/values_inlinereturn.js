@@ -21,6 +21,6 @@ Blockly.Blocks['values_inlinereturn'] = {
 
 javascript.javascriptGenerator.forBlock['values_inlinereturn'] = function(block, generator) {
   var value_return = generator.valueToCode(block, 'RETURN', javascript.Order.ATOMIC) || null;
-  var code = `return ${value_return};`;
+  var code = `return ${value_return};\n`;
   return code;
 };
