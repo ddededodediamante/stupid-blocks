@@ -1,4 +1,4 @@
-Blockly.Blocks['value_inline.js'] = {
+Blockly.Blocks['value_inline'] = {
   json: {
   "type": "value_inline",
   "message0": "%1",
@@ -21,7 +21,7 @@ Blockly.Blocks['value_inline.js'] = {
 javascript.javascriptGenerator.forBlock['value_inline'] = function(block, generator) {
   var statements_code = generator.statementToCode(block, 'CODE');
   var code = `function() {
-    ${statenents_code}
+    ${statements_code}
   }`;
   return [code, Blockly.javascript.ORDER_NONE];
 };
