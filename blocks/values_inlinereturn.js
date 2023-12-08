@@ -1,6 +1,6 @@
-Blockly.Blocks['value_inlinereturn'] = {
+Blockly.Blocks['values_inlinereturn'] = {
   json: {
-  "type": "value_inlinereturn",
+  "type": "values_inlinereturn",
   "message0": "return %1",
   "args0": [
     {
@@ -19,7 +19,7 @@ Blockly.Blocks['value_inlinereturn'] = {
   }
 };
 
-javascript.javascriptGenerator.forBlock['value_inlinereturn'] = function(block, generator) {
+javascript.javascriptGenerator.forBlock['values_inlinereturn'] = function(block, generator) {
   var value_return = generator.valueToCode(block, 'RETURN', javascript.Order.ATOMIC) || null;
   var code = `return ${value_return};`;
   return code;
