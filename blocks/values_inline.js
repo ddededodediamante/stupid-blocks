@@ -24,7 +24,7 @@ Blockly.Blocks['values_inline'] = {
 javascript.javascriptGenerator.forBlock['values_inline'] = function(block, generator) {
   var statements_code = generator.statementToCode(block, 'CODE');
   var code = `(function() {
-  ${statements_code}
+${statements_code}
 })()`;
   return [code, javascript.Order.NONE];
 };
