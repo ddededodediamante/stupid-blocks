@@ -1,8 +1,11 @@
 Blockly.Blocks['values_inline'] = {
   json: {
-  "type": "values_inline",
-  "message0": "%1",
+  "type": "value_inlines",
+  "message0": "inline code %1 %2",
   "args0": [
+    {
+      "type": "input_dummy"
+    },
     {
       "type": "input_statement",
       "name": "CODE"
