@@ -42,5 +42,5 @@ javascript.javascriptGenerator.forBlock['values_error'] = function(block, genera
   } else {
     var code = 'error';
   }
-  return [code, Blockly.javascript.ORDER_NONE];
+  return [code, javascript.Order.NONE];
 };
