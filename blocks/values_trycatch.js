@@ -33,9 +33,9 @@ javascript.javascriptGenerator.forBlock['values_trycatch'] = function(block, gen
   var statements_code = generator.statementToCode(block, 'CODE');
   var statements_error = generator.statementToCode(block, 'ERROR');
   var code = `try {
-statements_code
+${statements_code}
 } catch(error) {
-statements_error
+${statements_error}
 }\n`;
   return code;
 };
