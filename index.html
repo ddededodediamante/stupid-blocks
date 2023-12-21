@@ -232,17 +232,26 @@
 
       if (blocklyCommonStyle) {
         var newStyleContent = blocklyCommonStyle.innerHTML.replace(
-          '.blocklyDropDownButton {',
+          `.blocklyDropDownButton {
+display: inline-block;
+float: left;
+padding: 0;
+margin: 4px;
+border-radius: 4px;
+outline: none;
+border: 1px solid;
+transition: box-shadow .1s;
+cursor: pointer;`,
           `.blocklyDropDownButton { 
-          display: inline-block;
-          float: left;
-          padding: 0;
-          margin: 4px;
-          border-radius: 4px;
-          outline: none;
-          border: 7px solid;
-          transition: box-shadow .1s;
-          cursor: pointer;`
+display: inline-block;
+float: left;
+padding: 0;
+margin: 4px;
+border-radius: 4px;
+outline: none;
+border: 7px solid;
+transition: box-shadow .1s;
+cursor: pointer;`
         );
 
         blocklyCommonStyle.innerHTML = newStyleContent;
