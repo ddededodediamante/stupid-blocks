@@ -189,6 +189,8 @@
   <script src="blocks/values_error.js"></script>
 
   <script>
+    import './renderers/javascript';
+    
     var fontSize = 16;
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
@@ -199,7 +201,7 @@
         snap: false,
       },
       trashcan: true,
-      renderer: 'zelos',
+      renderer: 'custom_renderer',
       sounds: true,
       zoom: {
         controls: true,
