@@ -188,9 +188,20 @@
   <script src="blocks/values_error.js"></script>
 
   <script>
+    class CustomConstantProvider extends Blockly.blockRendering.ConstantProvider {
+      constructor() {
+        super();
+        this.CORNER_RADIUS = 12;
+        this.ADD_START_HATS = true;
+      }
+    }
+    
     class CustomRenderer extends Blockly.blockRendering.Renderer {
       constructor() {
         super();
+        makeConstants_() {
+          return new CustomConstantProvider();
+        }
       }
     }
     
