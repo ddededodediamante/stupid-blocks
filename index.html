@@ -208,7 +208,6 @@
     });
 
     function updateCode() {
-      editStyle()
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       Blockly.JavaScript.addReservedWords('code');
       document.getElementById('generatedCodeBlockly').textContent = code
@@ -226,37 +225,6 @@
     function fontSizeAdd(num) {
       fontSize += Number(num)
       document.getElementById('generatedCodeBlockly').style.fontSize = fontSize + 'px'
-    }
-
-    function editStyle() {
-      var blocklyCommonStyle = document.getElementById('blockly-common-style');
-
-      if (blocklyCommonStyle) {
-        var newStyleContent = blocklyCommonStyle.innerHTML.replace(
-          `.blocklyDropDownButton {
-display: inline-block;
-float: left;
-padding: 0;
-margin: 4px;
-border-radius: 4px;
-outline: none;
-border: 1px solid;
-transition: box-shadow .1s;
-cursor: pointer;`,
-          `.blocklyDropDownButton { 
-display: inline-block;
-float: left;
-padding: 0;
-margin: 4px;
-border-radius: 4px;
-outline: none;
-border: 7px solid;
-transition: box-shadow .1s;
-cursor: pointer;`
-        );
-
-        blocklyCommonStyle.innerHTML = newStyleContent;
-      }
     }
     
     workspace.addChangeListener(updateCode);
