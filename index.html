@@ -192,7 +192,7 @@
       Blockly.CustomRenderer.superClass_.constructor.call(this, workspace);
     };
     
-    Blockly.utils.object.inherits(Blockly.CustomRenderer, Blockly.blockRendering.Renderer);
+    Blockly.utils.object.deepMerge(Blockly.CustomRenderer, Blockly.blockRendering.Renderer);
     
     Blockly.CustomRenderer.prototype.drawInlineInput_ = function (input) {
       var inputGroup = Blockly.CustomRenderer.superClass_.drawInlineInput_.call(this, input);
