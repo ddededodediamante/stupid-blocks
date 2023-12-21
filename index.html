@@ -61,7 +61,6 @@
   <!-- Include Blockly library -->
   <script src="https://unpkg.com/blockly/blockly.min.js"></script>
   <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-  
 </head>
 <body>
   <div id="blocklyContainer">
@@ -189,8 +188,7 @@
   <script src="blocks/values_error.js"></script>
 
   <script>
-    import './renderers/javascript';
-    
+    const custom_renderer = require('./renderers/custom.js');
     var fontSize = 16;
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
