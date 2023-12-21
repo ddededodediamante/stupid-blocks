@@ -199,9 +199,9 @@
     class CustomRenderer extends Blockly.blockRendering.Renderer {
       constructor() {
         super();
-        makeConstants_() {
-          return new CustomConstantProvider();
-        }
+      }
+      makeConstants_() {
+        return new CustomConstantProvider();
       }
     }
     
