@@ -188,26 +188,13 @@
   <script src="blocks/values_error.js"></script>
 
   <script>
-    Blockly.CustomRenderer = function(workspace) {
-      Blockly.CustomRenderer.superClass_.constructor.call(this, workspace);
-    };
-    
-    Blockly.utils.object.deepMerge(Blockly.CustomRenderer, Blockly.blockRendering.Renderer);
-    
-    Blockly.CustomRenderer.prototype.drawInlineInput_ = function (input) {
-      var inputGroup = Blockly.CustomRenderer.superClass_.drawInlineInput_.call(this, input);
-    
-      var dropdownButton = inputGroup.firstChild;
-    
-      if (dropdownButton) {
-        var radius = 7;
-        dropdownButton.setAttribute('rx', radius);
-        dropdownButton.setAttribute('ry', radius);
+    class CustomRenderer extends Blockly.blockRendering.Renderer {
+      constructor() {
+        super();
       }
+    }
     
-      return inputGroup;
-    };
-    Blockly.blockRendering.register('custom_renderer', Blockly.CustomRenderer);
+    Blockly.blockRendering.register('custom_renderer', CustomRenderer);
     
     var fontSize = 16;
     var workspace = Blockly.inject('blocklyDiv', {
