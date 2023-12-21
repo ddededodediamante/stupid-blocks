@@ -227,6 +227,23 @@
       document.getElementById('generatedCodeBlockly').style.fontSize = fontSize + 'px'
     }
 
+    window.onload = function() {
+      var blocklyCommonStyle = document.getElementById('blockly-common-style');
+
+      if (blocklyCommonStyle) {
+        var styleSheet = blocklyCommonStyle.sheet;
+        var rules = styleSheet.cssRules || styleSheet.rules;
+
+        for (var i = 0; i < rules.length; i++) {
+          if (rules[i].selectorText === '.blocklyDropDownButton') {
+            rules[i].style.backgroundColor = '#aabbcc';
+            rules[i].style.color = '#ffffff';
+            break;
+          }
+        }
+      }
+    }
+    
     workspace.addChangeListener(updateCode);
     updateCode();
   </script>
