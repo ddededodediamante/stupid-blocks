@@ -188,41 +188,6 @@
   <script src="blocks/values_error.js"></script>
 
   <script>
-    class CustomConstantProvider extends Blockly.blockRendering.ConstantProvider {
-      constructor() {
-        super();
-        this.CORNER_RADIUS = 6;
-        this.ADD_START_HATS = true;
-      }
-      init() {
-        this.JAGGED_TEETH = this.makeJaggedTeeth();
-        this.NOTCH = this.makeNotch();
-      }
-      shapeFor(connection: RenderedConnection): Shape {
-        switch (connection.type) {
-          case ConnectionType.INPUT_VALUE:
-          case ConnectionType.OUTPUT_VALUE:
-            return this.PUZZLE_TAB;
-          case ConnectionType.PREVIOUS_STATEMENT:
-          case ConnectionType.NEXT_STATEMENT:
-            return this.NOTCH;
-          default:
-            throw Error('Unknown connection type');
-        }
-      }
-    }
-    
-    class CustomRenderer extends Blockly.blockRendering.Renderer {
-      constructor() {
-        super();
-      }
-      makeConstants_() {
-        return new CustomConstantProvider();
-      }
-    }
-    
-    Blockly.blockRendering.register('custom_renderer', CustomRenderer);
-    
     var fontSize = 16;
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
@@ -233,7 +198,7 @@
         snap: false,
       },
       trashcan: true,
-      renderer: 'custom_renderer',
+      renderer: 'zelos',
       sounds: true,
       zoom: {
         controls: true,
