@@ -231,16 +231,21 @@
       var blocklyCommonStyle = document.getElementById('blockly-common-style');
 
       if (blocklyCommonStyle) {
-        var styleSheet = blocklyCommonStyle.sheet;
-        var rules = styleSheet.cssRules || styleSheet.rules;
+        var newStyleContent = blocklyCommonStyle.innerHTML.replace(
+          '.blocklyDropDownButton {',
+          `.blocklyDropDownButton { 
+          display: inline-block;
+          float: left;
+          padding: 0;
+          margin: 4px;
+          border-radius: 4px;
+          outline: none;
+          border: 7px solid;
+          transition: box-shadow .1s;
+          cursor: pointer;`
+        );
 
-        for (var i = 0; i < rules.length; i++) {
-          if (rules[i].selectorText === '.blocklyDropDownButton') {
-            rules[i].style.backgroundColor = '#aabbcc';
-            rules[i].style.color = '#ffffff';
-            break;
-          }
-        }
+        blocklyCommonStyle.innerHTML = newStyleContent;
       }
     }
     
