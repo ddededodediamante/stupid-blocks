@@ -208,6 +208,7 @@
     });
 
     function updateCode() {
+      editStyle()
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       Blockly.JavaScript.addReservedWords('code');
       document.getElementById('generatedCodeBlockly').textContent = code
@@ -227,7 +228,7 @@
       document.getElementById('generatedCodeBlockly').style.fontSize = fontSize + 'px'
     }
 
-    window.onload = function() {
+    function editStyle() {
       var blocklyCommonStyle = document.getElementById('blockly-common-style');
 
       if (blocklyCommonStyle) {
