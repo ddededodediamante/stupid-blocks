@@ -70,6 +70,8 @@
         <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
         <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
         <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
+        <button id="saveFile" onclick="SaveToFile()">Save To File</button>
+        <button id="loadFile" onclick="LoadFromFile()">Load From File</button>
       </div>
       <p id="generatedCodeBlockly">...</p>
     </div>
@@ -239,6 +241,62 @@
     
     workspace.addChangeListener(updateCode);
     updateCode();
+
+    function saveToFile() {
+      var xmlDom = Blockly.Xml.workspaceToDom(workspace);
+      var xmlText = Blockly.Xml.domToText(xmlDom);
+
+      var generatedCode = document.getElementById("generatedCodeBlockly").textContent;
+
+      var fileName = prompt("Enter a file name (without extension):", "BlocklyFile");
+
+      if (fileName === null) {
+        return;
+      }
+
+      fileName += ".json";
+
+      var dataToSave = {
+        xml: xmlText,
+        code: generatedCode
+      };
+
+      var blob = new Blob([JSON.stringify(dataToSave)], { type: "application/json" });
+      var link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+    }
+
+    function loadFromFile() {
+      var fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = '.json'; // Format ig
+
+      fileInput.addEventListener('change', function (e) {
+        var file = e.target.files[0];
+
+        if (file) {
+          var reader = new FileReader();
+
+          reader.onload = function (event) {
+            var jsonData = JSON.parse(event.target.result);
+
+            workspace.clear();
+
+            var parser = new DOMParser();
+            var xmlDom = parser.parseFromString(jsonData.xml, "application/xml");
+            Blockly.Xml.domToWorkspace(xmlDom.documentElement, workspace);
+
+            document.getElementById('generatedCodeBlockly').textContent = jsonData.code;
+          };
+
+          reader.readAsText(file);
+        }
+      });
+
+      fileInput.click();
+    }
   </script>
 
 </body>
