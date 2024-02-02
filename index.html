@@ -257,8 +257,7 @@
       fileName += ".json";
 
       var dataToSave = {
-        xml: xmlText,
-        code: generatedCode
+        xml: xmlText
       };
 
       var blob = new Blob([JSON.stringify(dataToSave)], { type: "application/json" });
@@ -271,7 +270,7 @@
     function loadFromFile() {
       var fileInput = document.createElement('input');
       fileInput.type = 'file';
-      fileInput.accept = '.json'; // Format ig
+      fileInput.accept = '.json'; // File format
 
       fileInput.addEventListener('change', function (e) {
         var file = e.target.files[0];
@@ -279,7 +278,7 @@
         if (file) {
           var reader = new FileReader();
 
-          reader.onload = function (event) {
+          reader.onload = function(event) {
             var jsonData = JSON.parse(event.target.result);
 
             workspace.clear();
@@ -288,7 +287,7 @@
             var xmlDom = parser.parseFromString(jsonData.xml, "application/xml");
             Blockly.Xml.domToWorkspace(xmlDom.documentElement, workspace);
 
-            document.getElementById('generatedCodeBlockly').textContent = jsonData.code;
+            updateCode()
           };
 
           reader.readAsText(file);
