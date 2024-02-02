@@ -68,8 +68,6 @@
     <div id="generatedCodeContainer">
       <div id="buttonContainer">
         <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
-        <button id="fontSizePlusButton" onclick="fontSizeAdd(1)">+ Font Size</button>
-        <button id="fontSizeMinusButton" onclick="fontSizeAdd(-1)">- Font Size</button>
         <button id="saveFile" onclick="saveToFile()">Save To File</button>
         <button id="loadFile" onclick="loadFromFile()">Load From File</button>
       </div>
@@ -196,7 +194,7 @@
   <!-- <script scr="path to your block here></script>" -->
 
   <script>
-    var fontSize = 16;
+    var localSaveCount = 10;
     var workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
       grid: {
@@ -220,6 +218,7 @@
     });
 
     function updateCode() {
+      console.log('updated code');
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       Blockly.JavaScript.addReservedWords('code');
       document.getElementById('generatedCodeBlockly').textContent = code
