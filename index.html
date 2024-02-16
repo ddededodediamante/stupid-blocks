@@ -1,92 +1,101 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stupid Blocks</title>
 
+  <!-- Include Blockly library -->
+  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+  <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+
   <style>
     body {
       margin: 0;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+      background-color: #c8cfd4;
+    }
+
+    #buttonContainer {
+      display: flex;
+      margin: 5px;
+      width: 100%;
+    }
+
+    #buttonContainer button {
+      margin-right: 5px;
+      border-radius: 7px;
+      background-color: #f0f4f7;
+      border: 2px solid #858b8f;
+      padding: 4px;
+      font-size: 14px;
+      transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+    }
+
+    #buttonContainer button:hover {
+      color: white;
+      background-color: #858b8f;
+      border-color: #f0f4f7;
     }
 
     #blocklyContainer {
       display: flex;
-      height: 100vh;
+      flex: 1;
     }
 
     #blocklyDiv {
-      flex: 1;
+      flex: 1.8;
       height: 100%;
+      overflow-y: auto;
     }
 
-    #generatedCodeContainer {
+    #generatedCodeBlockly {
       flex: 1;
       overflow-y: auto;
       overflow-x: scroll;
       font-family: Arial, sans-serif;
+      font-size: 16px;
       padding: 10px;
       white-space: pre;
       background-color: #f0f0f0;
       margin: 0;
       position: relative;
+      max-height: 100vh;
     }
-
-    #buttonContainer {
-      display: flex;
-      top: 0;
-      left: 0;
-      margin-top: -35px;
-    }
-
-    #buttonContainer button {
-      margin-right: 5px;
-      border-radius: 5px;
-      border: 2px solid #858b8f;
-      transition: box-shadow 0.2s ease;
-    }
-
-    #buttonContainer button:hover {
-      box-shadow: 0 0 7px #858b8f;
-    }
-
-    #generatedCodeBlockly {
-      margin-top: -25px;
-      font-size: 16px;
-    }
-
   </style>
-
-  <!-- Include Blockly library -->
-  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-  <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
 </head>
 <body>
+  <div id="buttonContainer">
+    <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
+    <button id="saveFile" onclick="saveToFile()">Save To File</button>
+    <button id="loadFile" onclick="loadFromFile()">Load From File</button>
+    <button id="recoverProject" onclick="recoverProject()">Recover Project</button>
+  </div>
+
   <div id="blocklyContainer">
     <div id="blocklyDiv"></div>
-    <div id="generatedCodeContainer">
-      <div id="buttonContainer">
-        <button id="runCodeButton" onclick="runCode()">Run Generated Code</button>
-        <button id="saveFile" onclick="saveToFile()">Save To File</button>
-        <button id="loadFile" onclick="loadFromFile()">Load From File</button>
-      </div>
-      <p id="generatedCodeBlockly">...</p>
-    </div>
+    <p id="generatedCodeBlockly">...</p>
   </div>
 
   <xml id="toolbox" style="display: none">
-    <category name="Logic" colour="#5C81A6">
+    <category name="Logic" colour="#42A5F5">
       <block type="controls_if"></block>
+      <block type="logic_toboolean"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
       <block type="logic_negate"></block>
       <block type="logic_boolean"></block>
+      <block type="logic_boolean_random"></block>
       <block type="logic_null"></block>
       <block type="logic_ternary"></block>
     </category>
 
-    <category name="Loops" colour="#5CA65C">
+    <category name="Loops" colour="#ffbb4d">
       <block type="controls_repeat_ext"></block>
       <block type="controls_whileUntil"></block>
       <block type="controls_for"></block>
@@ -94,39 +103,185 @@
       <block type="controls_flow_statements"></block>
     </category>
 
-    <category name="Math" colour="#5C68A6">
+    <category name="Math" colour="#ba68c8">
       <block type="math_number"></block>
-      <block type="math_arithmetic"></block>
-      <block type="math_single"></block>
-      <block type="math_trig"></block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
       <block type="math_constant"></block>
       <block type="math_number_property"></block>
-      <block type="math_round"></block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">1.5</field>
+          </shadow>
+        </value>
+      </block>
       <block type="math_on_list"></block>
-      <block type="math_modulo"></block>
-      <block type="math_constrain"></block>
-      <block type="math_random_int"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
       <block type="math_random_float"></block>
       <block type="math_atan2"></block>
-      <block type="custom_addone"></block>
     </category>
 
-    <category name="Text" colour="#5C708B" shape="roundedRectangle">
+    <category name="Text" colour="#66bb6a">
       <block type="text"></block>
-      <block type="text_length"></block>
-      <block type="text_count"></block>
-      <block type="text_isEmpty"></block>
+      <block type="text_length">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_count">
+        <value name="SUB">
+          <shadow type="text">
+            <field name="TEXT">w</field>
+          </shadow>
+        </value>
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">www</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
       <block type="text_join"></block>
-      <block type="text_indexOf"></block>
-      <block type="text_charAt"></block>
-      <block type="text_getSubstring"></block>
-      <block type="text_changeCase"></block>
-      <block type="text_trim"></block>
-      <block type="text_replace"></block>
-      <block type="text_reverse"></block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="FIND">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">  abc  </field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_replace">
+        <value name="FROM">
+          <shadow type="text">
+            <field name="TEXT">a</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="text">
+            <field name="TEXT">ab</field>
+          </shadow>
+        </value>
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abcabc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_reverse">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
     </category>
 
-    <category name="Lists" colour="#745CA6">
+    <category name="Lists" colour="#FF7043">
       <block type="lists_create_empty"></block>
       <block type="lists_create_with"></block>
       <block type="lists_repeat"></block>
@@ -139,34 +294,38 @@
       <block type="lists_setIndex"></block>
     </category>
 
-     <category name="Colour" colour="#A6745C">
+    <category name="Colour" colour="#9575CD">
       <block type="colour_picker"></block>
       <block type="colour_random"></block>
       <block type="colour_rgb"></block>
-      <block type="colour_blend"></block>
+      <block type="colour_blend">
+        <value name="COLOUR1">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+        <value name="COLOUR2">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+        <value name="RATIO">
+          <shadow type="math_number">
+            <field name="NUM">0.5</field>
+          </shadow>
+        </value>
+      </block>
     </category>
 
-    <category name="Variables" colour="#a55b80">
-      <block type="custom_variableget"></block>
-      <block type="custom_variableset"></block>
-      <block type="custom_variablechange"></block>
-    </category>
+    <category name="Variables" custom="VARIABLE" colour="#EC407A"></category>
 
-    <category name="Window" colour="#69717d">
+    <category name="Functions" custom="PROCEDURE" colour="#26C6DA"></category>
+
+    <category name="Window" colour="#78909C">
       <block type="window_alert"></block>
       <block type="window_confirm"></block>
       <block type="window_prompt"></block>
       <block type="window_console"></block>
-    </category>
-
-    <category name="Values" colour="#60a46c">
-      <block type="values_asnumber"></block>
-      <block type="values_asstring"></block>
-      <block type="values_asboolean"></block>
-      <block type="values_inline"></block>
-      <block type="values_inlinereturn"></block>
-      <block type="values_trycatch"></block>
-      <block type="values_error"></block>
     </category>
 
     <!-- <category name="yourNameHere" colour="hex color"> -->
@@ -175,127 +334,13 @@
 
   </xml>
 
-  <script src="blocks/custom_addone.js"></script>
-  <script src="blocks/custom_variableget.js"></script>
-  <script src="blocks/custom_variableset.js"></script>
-  <script src="blocks/custom_variablechange.js"></script>
-  <script src="blocks/window_alert.js"></script>
-  <script src="blocks/window_confirm.js"></script>
-  <script src="blocks/window_prompt.js"></script>
-  <script src="blocks/window_console.js"></script>
-  <script src="blocks/values_asnumber.js"></script>
-  <script src="blocks/values_asstring.js"></script>
-  <script src="blocks/values_asboolean.js"></script>
-  <script src="blocks/values_inline.js"></script>
-  <script src="blocks/values_inlinereturn.js"></script>
-  <script src="blocks/values_trycatch.js"></script>
-  <script src="blocks/values_error.js"></script>
-  
-  <!-- <script scr="path to your block here></script>" -->
+  <script src="script.js"></script>
 
-  <script>
-    var localSaveCount = 10;
-    var workspace = Blockly.inject('blocklyDiv', {
-      toolbox: document.getElementById('toolbox'),
-      grid: {
-        spacing: 20,
-        length: 3,
-        colour: '#ccc',
-        snap: false,
-      },
-      trashcan: true,
-      renderer: 'zelos',
-      sounds: true,
-      zoom: {
-        controls: true,
-        wheel: true,
-        startScale: 1.0,
-        maxScale: 3,
-        minScale: 0.2,
-        scaleSpeed: 1.2,
-        pinch: true
-      },
-    });
+  <script src="blocks/logic.js"></script>
+  <script src="blocks/window.js"></script>
+  <script src="blocks/json.js"></script>
 
-    function updateCode() {
-      console.log('updated code');
-      var code = Blockly.JavaScript.workspaceToCode(workspace);
-      Blockly.JavaScript.addReservedWords('code');
-      document.getElementById('generatedCodeBlockly').textContent = code
-    }
-
-    function runCode() {
-      try {
-        var workspaceCode = Blockly.JavaScript.workspaceToCode(workspace);
-        eval(workspaceCode);
-      } catch(err) {
-        window.alert(err)
-      }
-    }
-
-    function fontSizeAdd(num) {
-      fontSize += Number(num)
-      document.getElementById('generatedCodeBlockly').style.fontSize = fontSize + 'px'
-    }
-    
-    workspace.addChangeListener(updateCode);
-    updateCode();
-
-    function saveToFile() {
-      var xmlDom = Blockly.Xml.workspaceToDom(workspace);
-      var xmlText = Blockly.Xml.domToText(xmlDom);
-
-      var generatedCode = document.getElementById("generatedCodeBlockly").textContent;
-
-      var fileName = prompt("Enter a file name (without extension):", "BlocklyFile");
-
-      if (fileName === null) {
-        return;
-      }
-
-      fileName += ".json";
-
-      var dataToSave = {
-        xml: xmlText
-      };
-
-      var blob = new Blob([JSON.stringify(dataToSave)], { type: "application/json" });
-      var link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download = fileName;
-      link.click();
-    }
-
-    function loadFromFile() {
-      var fileInput = document.createElement('input');
-      fileInput.type = 'file';
-      fileInput.accept = '.json'; // File format
-
-      fileInput.addEventListener('change', function (e) {
-        var file = e.target.files[0];
-
-        if (file) {
-          var reader = new FileReader();
-
-          reader.onload = function(event) {
-            var jsonData = JSON.parse(event.target.result);
-
-            workspace.clear();
-
-            var parser = new DOMParser();
-            var xmlDom = parser.parseFromString(jsonData.xml, "application/xml");
-            Blockly.Xml.domToWorkspace(xmlDom.documentElement, workspace);
-
-            updateCode()
-          };
-
-          reader.readAsText(file);
-        }
-      });
-
-      fileInput.click();
-    }
-  </script>
+  <!-- <script scr="path to your block/s here></script>" -->
 
 </body>
 </html>
